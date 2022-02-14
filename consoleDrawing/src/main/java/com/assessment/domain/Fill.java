@@ -44,7 +44,11 @@ public class Fill implements Drawable {
 	}
 
 	@Override
-	public void draw(Canvas canvas) {
+	public void draw(Canvas canvas) throws Exception {
+		if (null == canvas) {
+			throw new Exception("No canvas detected. Please create a canvas first before drawing.");
+		}
+		
 		String[][] canvasMatrix = canvas.getCanvasMatrix();
 		int y = this.y;
 		int x = this.x;
@@ -52,30 +56,30 @@ public class Fill implements Drawable {
 
 		String color = canvasMatrix[y][x];
 		if (color != newColor) {
-			dfs(canvasMatrix, y, x, color, newColor);
+			fill(canvasMatrix, y, x, color, newColor);
 		}
 
 		canvas.setCanvasMatrix(canvasMatrix);
 
 	}
 
-	private void dfs(String[][] canvasMatrix, int y, int x, String color, String newColor) {
+	private void fill(String[][] canvasMatrix, int y, int x, String color, String newColor) {
 		if (canvasMatrix[y][x] == color) {
 			canvasMatrix[y][x] = newColor;
 			if (y >= 1) {
-				dfs(canvasMatrix, y - 1, x, color, newColor);
+				fill(canvasMatrix, y - 1, x, color, newColor);
 			}
 
 			if (x >= 1) {
-				dfs(canvasMatrix, y, x - 1, color, newColor);
+				fill(canvasMatrix, y, x - 1, color, newColor);
 			}
 
 			if (y + 1 < canvasMatrix.length) {
-				dfs(canvasMatrix, y + 1, x, color, newColor);
+				fill(canvasMatrix, y + 1, x, color, newColor);
 			}
 
 			if (x + 1 < canvasMatrix[0].length) {
-				dfs(canvasMatrix, y, x + 1, color, newColor);
+				fill(canvasMatrix, y, x + 1, color, newColor);
 			}
 
 		}

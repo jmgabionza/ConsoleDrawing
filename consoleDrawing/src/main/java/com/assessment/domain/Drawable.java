@@ -9,6 +9,6 @@ package com.assessment.domain;
  */
 public interface Drawable {
 	
-	public void draw(Canvas canvas);
+	public void draw(Canvas canvas) throws Exception;
 
 }

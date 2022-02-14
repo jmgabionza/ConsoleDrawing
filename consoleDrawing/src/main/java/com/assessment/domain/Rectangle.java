@@ -54,7 +54,11 @@ public class Rectangle implements Drawable {
 	}
 
 	@Override
-	public void draw(Canvas canvas) {
+	public void draw(Canvas canvas) throws Exception {
+		if (null == canvas) {
+			throw new Exception("No canvas detected. Please create a canvas first before drawing.");
+		}
+		
 		String[][] canvasMatrix = canvas.getCanvasMatrix();
 		int x1 = this.x1;
 		int y1 = this.y1;

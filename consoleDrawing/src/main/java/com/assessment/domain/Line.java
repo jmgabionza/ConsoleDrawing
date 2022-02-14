@@ -54,7 +54,11 @@ public class Line implements Drawable {
 	}
 
 	@Override
-	public void draw(Canvas canvas) {
+	public void draw(Canvas canvas) throws Exception {
+		if (null == canvas) {
+			throw new Exception("No canvas detected. Please create a canvas first before drawing.");
+		}
+		
 		String[][] canvasMatrix = canvas.getCanvasMatrix();
 		int x1 = this.x1;
 		int x2 = this.x2;

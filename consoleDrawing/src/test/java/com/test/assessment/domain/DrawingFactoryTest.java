@@ -1,17 +1,17 @@
 /**
  * 
  */
-package com.test.assessment.util;
+package com.test.assessment.domain;
 
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
 import com.assessment.domain.Canvas;
+import com.assessment.domain.DrawingFactory;
 import com.assessment.domain.Fill;
 import com.assessment.domain.Line;
 import com.assessment.domain.Rectangle;
-import com.assessment.util.DrawingFactory;
 
 /**
  * @author jangabionza

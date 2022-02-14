@@ -7,8 +7,9 @@ import java.util.Scanner;
 
 import com.assessment.domain.Canvas;
 import com.assessment.domain.Drawable;
+import com.assessment.domain.DrawingFactory;
+import com.assessment.exception.ValidationException;
 import com.assessment.service.ConsoleService;
-import com.assessment.util.DrawingFactory;
 import com.assessment.validator.CommandValidator;
 import com.assessment.validator.impl.CommandValidatorImpl;
 
@@ -22,7 +23,7 @@ public class ConsoleServiceImpl implements ConsoleService {
 
 	@Override
 	public String getCommand(Scanner in) {
-		System.out.println("enter command: ");
+		System.out.println("enter command or 'Q' to exit: ");
 		String input = in.nextLine();
 		return input;
 	}
@@ -52,10 +53,8 @@ public class ConsoleServiceImpl implements ConsoleService {
 	}
 
 	@Override
-	public boolean validate(String[] command) {
-		boolean isValid = true;
-		isValid = commandValidator.isValidCommand(command);
-		isValid = commandValidator.isValidDimension(command);
-		return isValid;
+	public void validate(String[] command) throws ValidationException {
+		commandValidator.isValidCommand(command);
+		commandValidator.isValidCommandParameters(command);
 	}
 }

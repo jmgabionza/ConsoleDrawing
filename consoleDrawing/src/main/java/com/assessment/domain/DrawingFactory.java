@@ -1,13 +1,7 @@
 /**
  * 
  */
-package com.assessment.util;
-
-import com.assessment.domain.Canvas;
-import com.assessment.domain.Drawable;
-import com.assessment.domain.Fill;
-import com.assessment.domain.Line;
-import com.assessment.domain.Rectangle;
+package com.assessment.domain;
 
 /**
  * @author jangabionza
@@ -31,6 +25,6 @@ public class DrawingFactory {
 		default:
 			break;
 		}
-		throw new Exception("unknown instance");
+		throw new Exception("Unknown drawing command [" + command[0] + "], Please check your command and try again.");
 	}
 }
